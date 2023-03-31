@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.homebox{
+    background-image: url("./images/health1.jpg");
+    height: 100vh;
+    background-size: cover;
+}
+.home_header{
+    background-color: rgba(0, 0, 0, 0.459);
+    padding: 4vh 0;
+    color: white;
+    font-size: 25px;
+}
+.home_grid{
+    display: grid;
+    grid-template-columns: 49vw 49vw;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
+    background-color: rgba(0, 0, 0, 0.247);
+    color: white;
+    font-size: 30px;
+    font-family: cursive;
+    list-style:square;
+}
+.home_btnbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+}
+.homebtn{
+    height: 50px;
+    width: 200px;
+    border: none;
+    background: rgba(0, 0, 0, 0.603);
+    color: white;
+    font-size: 15px;
+}
+.homebtn:hover{
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.788);
+}

@@ -1,0 +1,78 @@
+.customer_box{
+    background-image: url("../images/health3.jpg");
+    height: 100vh;
+    background-size: cover;
+}
+.custH1{
+    padding: 4vh 0;
+    background-color: rgba(0, 0, 0, 0.452);
+    color: white;
+    font-size: 25px;
+}
+.custInput_box{
+    background-color: rgba(0, 0, 0, 0.267);
+    height: 20vh;
+    font-size: 30px;
+    color: white;
+}
+.custSelect{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.selectbox{
+    background-color: rgba(0, 0, 0, 0.651);
+    height: 30px;
+    width: 150px;
+    margin: 0 5px;
+    color: white;
+    font-size: 20px;
+    border: none;
+}
+.custtext_box{
+    height: 27px;
+    background-color: rgba(0, 0, 0, 0.651);
+    width: 200px;
+    color: white;
+    font-size: 20px;
+}
+.custSelectBtn{
+    height: 30px;
+    width: 150px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.651);
+    font-size: 20px;
+    border: none;
+    margin: 0 5px;
+}
+.custGraph{
+    background-color: rgba(0, 0, 0, 0.164);
+}
+.custTable{
+    background-color: rgba(0, 0, 0, 0.267);
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 25px;
+    height: 30vh;
+    overflow: auto;
+}
+table{
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+tr,td,th{
+    border: 1px solid white;
+    padding: 5px;
+}
+.tableoverflow{
+    overflow: auto;
+}
+.h3{
+    color: white;
+    font-size: 25px;
+}
+@media screen and (max-width:420px) {
+    *{
+        font-size: 20px;
+    }
+}

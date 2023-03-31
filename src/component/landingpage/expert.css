@@ -1,0 +1,69 @@
+.expertContainerBox{
+    background-image: url("../images/health3.jpg");
+    height: 100vh;
+    background-size: cover;
+}
+.expertHead{
+    padding: 4vh 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.623);
+}
+.expert_dash{
+    background-color: rgba(0, 0, 0, 0.445);
+    height: 87vh;
+    color: white;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 500;
+}
+td{
+    cursor: pointer;
+}
+.expertDetails{
+    height: 87vh;
+    background-color: rgba(0, 0, 0, 0.445);
+    font-size: 20px;
+    overflow: auto;
+}
+.detailsBox{
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 15vw);
+    justify-content: center;
+    align-items: center;
+}
+span{
+    display: inline-block;
+    width: 120px;
+}
+#detailsHead{
+    font-size: 25px;
+}
+.expertAdvise{
+    color: white;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.expertText{
+    width: 20vw;
+    height: 25px;
+    font-size: 20px;
+}
+.expertbtn{
+    width: 150px;
+    height: 30px;
+    border: none;
+    background: rgba(0, 0, 0, 0.61);
+    color: white;
+    font-size: 25px;
+    margin-top: 5px;
+}
+.expertbtn:hover{
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.9);
+}
