@@ -10,7 +10,7 @@ function Expert() {
   })
 
   const handleSubmit = async()=>{
-      await fetch("http://localhost:5000/expert/login",{
+      await fetch("https://fitness-mlv6.onrender.com/expert/login",{
           method:"POST",
           headers:{
               "content-type":"application/json"

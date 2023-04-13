@@ -10,7 +10,7 @@ function Customer() {
     })
 
     const handleSubmit = async()=>{
-        await fetch("http://localhost:5000/customer/login",{
+        await fetch("https://fitness-mlv6.onrender.com/customer/login",{
             method:"POST",
             headers:{
                 "content-type":"application/json"

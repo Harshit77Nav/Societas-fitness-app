@@ -29,7 +29,7 @@ function Expertlanding() {
 
     const getdata = async (req,res)=>{
         setFshow(false)
-        await fetch("http://localhost:5000/expert/data", {
+        await fetch("https://fitness-mlv6.onrender.com/expert/data", {
             method:"GET",
             headers:{
                 "Authorization":valid.token
@@ -54,7 +54,7 @@ function Expertlanding() {
     const handleDetails = async(email)=>{
         setDashboard(false)
         setEmail(email);
-        await fetch(`http://localhost:5000/customer/data/${email}`,{
+        await fetch(`https://fitness-mlv6.onrender.com/customer/data/${email}`,{
             method:"GET",
             headers:{
                 "Authorization":valid.token
@@ -73,7 +73,7 @@ function Expertlanding() {
     
     const handleAdvise = async()=>{
         if(advise){
-        await fetch("http://localhost:5000/expert/advise",{
+        await fetch("https://fitness-mlv6.onrender.com/expert/advise",{
             method:"PATCH",
             headers:{
                 "Authorization":valid.token,

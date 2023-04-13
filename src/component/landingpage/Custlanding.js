@@ -10,7 +10,7 @@ function Custlanding() {
     const [show, setShow] = useState(true);
     const [result, setResult] = useState();
     const [unit, setUnit] = useState("Kilograms");
-    const [age, setAge] = useState("19-29")
+    const [age, setAge] = useState()
     const [weight1, setWeight] = useState();
     const [data, setData] = useState({
         color:null,
@@ -37,7 +37,7 @@ function Custlanding() {
 
     const getdata = async()=>{
         setShow(false);
-        await fetch(`http://localhost:5000/customer/data/${valid.email}`,{
+        await fetch(`https://fitness-mlv6.onrender.com/customer/data/${valid.email}`,{
             method:"GET",
             headers:{
                 "Authorization":valid.token
@@ -60,6 +60,16 @@ function Custlanding() {
     }
 
     const handleinput = ()=>{
+        if(!age){
+            return alert("Please select age")
+        }
+        const totalAge = moment().format("YYYY")
+        const ageyear = age.split("-")[0]
+        const finalAge = parseInt(totalAge)-parseInt(ageyear);
+        if(finalAge < 12){
+            return alert("Please enter Age above 12 years")
+        }
+        console.log(finalAge);
         if(!weight1){
          return alert("Enter your weight")
         }
@@ -70,19 +80,31 @@ function Custlanding() {
             weight = weight1
         }
 
-        if(age === "19-29"){  // 70-80
+        if(finalAge <= 19){
+            if(weight >= 35 && weight <= 45){
+                setData({...data,status:"Ideal weight",color:"green", ideal:"35-45"})
+            } else if(weight<35 && weight>=20){
+                setData({...data,status:"Slightly Under weight",color:"orange", ideal:"35-45"})
+            } else if(weight<20){
+                setData({...data,status:"Under weight",color:"red", ideal:"35-45"})
+            } else if(weight>45 && weight<=55){
+                setData({...data,status:"Slightly over weight",color:"orange", ideal:"35-45"})
+            } else if(weight>55){
+                setData({...data,status:"Over weight",color:"red", ideal:"35-45"})
+            }
+        } else if(finalAge > 19 && finalAge<=29){  // 70-80
             if(weight >= 70 && weight <= 80){
                 setData({...data,status:"Ideal weight",color:"green", ideal:"70-80"})
-            } else if(weight<70 && weight>=60){
+            } else if(weight<70 && weight>=50){
                 setData({...data,status:"Slightly Under weight",color:"orange", ideal:"70-80"})
-            } else if(weight<60){
+            } else if(weight<50){
                 setData({...data,status:"Under weight",color:"red", ideal:"70-80"})
             } else if(weight>80 && weight<=90){
                 setData({...data,status:"Slightly over weight",color:"orange", ideal:"70-80"})
             } else if(weight>90){
                 setData({...data,status:"Over weight",color:"red", ideal:"70-80"})
             }
-        } else if(age === "30-39"){ //75-90
+        } else if(finalAge >29 && finalAge<=39){ //75-90
             if(weight >= 75 && weight <= 90){
                 setData({...data,status:"Ideal weight",color:"green", ideal:"75-90"})
             } else if(weight<75 && weight>=65){
@@ -94,7 +116,7 @@ function Custlanding() {
             } else if(weight>95){
                 setData({...data,status:"Over weight",color:"red", ideal:"75-90"})
             }
-        } else if(age === "40-49" || age === "50-59"){ //70-90
+        } else if(finalAge >39 && finalAge <= 59){ //70-90
             if(weight >= 70 && weight <= 90){
                 setData({...data,status:"Ideal weight",color:"green", ideal:"70-90"})
             } else if(weight<70 && weight>=60){
@@ -106,7 +128,7 @@ function Custlanding() {
             } else if(weight>95){
                 setData({...data,status:"Over weight",color:"red", ideal:"70-90"})
             }
-        } else if(age === "60+"){ // 75-85
+        } else if(finalAge > 59){ // 75-85
             if(weight >= 70 && weight <= 85){
                 setData({...data,status:"Ideal weight",color:"green", ideal:"75-85"})
             } else if(weight<70 && weight>=60){
@@ -130,7 +152,7 @@ function Custlanding() {
             weight = weight1
         }
 
-        await fetch("http://localhost:5000/customer/data",{
+        await fetch("https://fitness-mlv6.onrender.com/customer/data",{
             method:"PATCH",
             headers:{
                 "content-type":"application/json",
@@ -160,38 +182,31 @@ function Custlanding() {
         fetchData();
     }
     
-
   return (
     <div className='customer_box'>
         <div className='custH1'><h1>Welcome {valid.name}</h1></div>
         <div className='custInput_box'>
             <div className='custSelect'>
                 <div>
-                <label>Select Unit</label>
+                <label>Select Unit:</label>
                 <select className='selectbox' onChange={(e)=>setUnit(e.target.value)}>
                     <option>Kilograms</option>
                     <option>Pounds</option>
                 </select>
                 </div>
                 <div>
-                <label>Select Your Age</label>
-                <select className='selectbox' onChange={(e)=>setAge(e.target.value)}>
-                    <option>19-29</option>
-                    <option>30-39</option>
-                    <option>40-49</option>
-                    <option>50-59</option>
-                    <option>60+</option>
-                </select>
+                <label>Select Your Age:</label>
+                <input className='selectbox' type={"date"} onChange={(e)=>setAge(e.target.value)}/>
                 </div>
             </div>
             {unit === "Kilograms"?
             <div>
-                <label>Enter your weight (Kilograms)</label>
+                <label>Enter your weight (Kilograms)</label><br/>
                 <input ref={inputelem} className='custtext_box' type={"number"} min="0" onChange={(e)=>setWeight(e.target.value)}/>
                 <button className='custSelectBtn' onClick={handleinput}>Enter</button>
             </div>:
             <div>
-                <label>Enter your weight (Pounds)</label>
+                <label>Enter your weight (Pounds)</label><br/>
                 <input ref={inputelem} className='custtext_box' type={"number"} min="0" onChange={(e)=>setWeight(e.target.value)}/>
                 <button className='custSelectBtn' onClick={handleinput}>Enter</button>
             </div>}
