@@ -65,6 +65,9 @@ function Custlanding() {
         if(!age){
             return alert("Please select age")
         }
+        if(!height){
+            return alert("Enter your Height")
+        }
         const totalAge = moment().format("YYYY")
         const ageyear = age.split("-")[0]
         const finalAge = parseInt(totalAge)-parseInt(ageyear);

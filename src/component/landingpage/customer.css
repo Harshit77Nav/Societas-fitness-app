@@ -86,9 +86,7 @@
 table{
     border: 1px solid black;
     border-collapse: collapse;
-    background-color: rgba(0, 0, 0, 0.671);
-    font-size: 30px;
-    font-weight: 500;
+    background-color: rgba(0, 0, 0, 0.788);
 }
 tr,td,th{
     border: 1px solid black;
