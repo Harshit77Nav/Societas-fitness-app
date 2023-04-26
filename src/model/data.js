@@ -6,7 +6,8 @@ const readingSch = mongoose.Schema({
     date:{type:String},
     reading:{type:Number},
     color:{type:String},
-    ideal:{type:String}
+    ideal:{type:String},
+    client:{type:String}
 })
 
 const dataModel = mongoose.model("data",readingSch);

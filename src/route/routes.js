@@ -96,14 +96,15 @@ router.post("/customer/login", async(req,res)=>{
 
 router.patch("/customer/data", verifyuser, async(req,res)=>{
     try {
-        const {email, date, reading, color, status, ideal} = req.body;
+        const {email, date, reading, color, status, ideal, client} = req.body;
         const result = await dataModel.create({
             email:email,
             status:status,
             date:date,
             reading:reading,
             color:color,
-            ideal:ideal
+            ideal:ideal,
+            client:client
         })
         const customerColor = await cusModel.updateOne({email:email},{
             color:color
