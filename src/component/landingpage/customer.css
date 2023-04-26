@@ -1,23 +1,41 @@
+*{
+    box-sizing: border-box;
+}
 .customer_box{
     background-image: url("../images/health3.jpg");
     height: 100vh;
     background-size: cover;
 }
+.maincontent{
+    display: grid;
+    grid-template-columns: 40vw 40vw;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.582);
+    height: 85vh;
+    padding-top: 40px;
+}
 .custH1{
     padding: 4vh 0;
-    background-color: rgba(0, 0, 0, 0.452);
+    background-color: rgba(0, 0, 0, 0.753);
     color: white;
-    font-size: 25px;
+    font-size: 24px;
+    box-shadow: 5px 10px 30px black;
+    color: rgb(200, 238, 113);
+    font-family: cursive;
 }
 .custInput_box{
     background-color: rgba(0, 0, 0, 0.267);
-    height: 20vh;
+    height: 30vh;
     font-size: 30px;
     color: white;
+    width: 40vw;
+    box-shadow: 5px 10px 30px black;
+    border-radius: 10px;
 }
 .custSelect{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
+    margin-bottom: 40px;
 }
 .selectbox{
     background-color: rgba(0, 0, 0, 0.651);
@@ -46,6 +64,13 @@
 }
 .custGraph{
     background-color: rgba(0, 0, 0, 0.164);
+    width: 40vw;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 10px 30px black;
+    border-radius: 10px;
 }
 .custTable{
     background-color: rgba(0, 0, 0, 0.267);
@@ -55,21 +80,41 @@
     font-size: 25px;
     height: 30vh;
     overflow: auto;
+    box-shadow: 5px 10px 30px black;
+    border-radius: 10px;
 }
 table{
-    border: 1px solid white;
+    border: 1px solid black;
     border-collapse: collapse;
+    background-color: rgba(0, 0, 0, 0.671);
+    font-size: 30px;
+    font-weight: 500;
 }
 tr,td,th{
-    border: 1px solid white;
+    border: 1px solid black;
     padding: 5px;
 }
 .tableoverflow{
     overflow: auto;
 }
+.tablehead{
+    position: sticky;
+    top: -1px;
+    background-color: black;
+}
 .h3{
     color: white;
     font-size: 25px;
+}
+.advise{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: flex-start;
+    gap: 20px;
+    box-shadow: 5px 10px 30px black;
+    border-radius: 10px;
+    height: 40vh;
 }
 @media screen and (max-width:420px) {
     *{

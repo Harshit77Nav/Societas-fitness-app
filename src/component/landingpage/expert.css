@@ -29,6 +29,11 @@ td{
 }
 .detailsBox{
     color: white;
+    background-color: rgba(0, 0, 0, 0.856);
+    width: fit-content;
+    margin: auto;
+    box-shadow: 5px 5px 10px black;
+    padding-left: 150px;
     display: grid;
     grid-template-columns: repeat(3, 15vw);
     justify-content: center;
@@ -66,4 +71,9 @@ span{
 .expertbtn:hover{
     cursor: pointer;
     background: rgba(0, 0, 0, 0.9);
+}
+@media screen and (max-width:700px) {
+    .detailsBox{
+        padding: 0;
+    }
 }

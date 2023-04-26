@@ -8,7 +8,7 @@ function Home() {
   return (
     <div className='homebox'>
         <div className='home_header'>
-            <h1>Societas</h1>
+            <h1></h1>
         </div>
         <div className='home_grid'>
         <div>

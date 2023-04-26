@@ -12,10 +12,12 @@ function Custlanding() {
     const [unit, setUnit] = useState("Kilograms");
     const [age, setAge] = useState()
     const [weight1, setWeight] = useState();
+    const [height, setHeight] = useState();
     const [data, setData] = useState({
         color:null,
         status:null,
         ideal:null,
+        client:null
     });
     const [valid, setValid] = useState({
         token:null,
@@ -80,67 +82,91 @@ function Custlanding() {
             weight = weight1
         }
 
-        if(finalAge <= 19){
-            if(weight >= 35 && weight <= 45){
-                setData({...data,status:"Ideal weight",color:"green", ideal:"35-45"})
-            } else if(weight<35 && weight>=20){
-                setData({...data,status:"Slightly Under weight",color:"orange", ideal:"35-45"})
-            } else if(weight<20){
-                setData({...data,status:"Under weight",color:"red", ideal:"35-45"})
-            } else if(weight>45 && weight<=55){
-                setData({...data,status:"Slightly over weight",color:"orange", ideal:"35-45"})
-            } else if(weight>55){
-                setData({...data,status:"Over weight",color:"red", ideal:"35-45"})
-            }
-        } else if(finalAge > 19 && finalAge<=29){  // 70-80
-            if(weight >= 70 && weight <= 80){
-                setData({...data,status:"Ideal weight",color:"green", ideal:"70-80"})
-            } else if(weight<70 && weight>=50){
-                setData({...data,status:"Slightly Under weight",color:"orange", ideal:"70-80"})
-            } else if(weight<50){
-                setData({...data,status:"Under weight",color:"red", ideal:"70-80"})
-            } else if(weight>80 && weight<=90){
-                setData({...data,status:"Slightly over weight",color:"orange", ideal:"70-80"})
-            } else if(weight>90){
-                setData({...data,status:"Over weight",color:"red", ideal:"70-80"})
-            }
-        } else if(finalAge >29 && finalAge<=39){ //75-90
-            if(weight >= 75 && weight <= 90){
-                setData({...data,status:"Ideal weight",color:"green", ideal:"75-90"})
-            } else if(weight<75 && weight>=65){
-                setData({...data,status:"Slightly Under weight",color:"orange", ideal:"75-90"})
-            } else if(weight<65){
-                setData({...data,status:"Under weight",color:"red", ideal:"75-90"})
-            } else if(weight>90 && weight<=95){
-                setData({...data,status:"Slightly over weight",color:"orange", ideal:"75-90"})
-            } else if(weight>95){
-                setData({...data,status:"Over weight",color:"red", ideal:"75-90"})
-            }
-        } else if(finalAge >39 && finalAge <= 59){ //70-90
-            if(weight >= 70 && weight <= 90){
-                setData({...data,status:"Ideal weight",color:"green", ideal:"70-90"})
-            } else if(weight<70 && weight>=60){
-                setData({...data,status:"Slightly Under weight",color:"orange", ideal:"70-90"})
-            } else if(weight<60){
-                setData({...data,status:"Under weight",color:"red", ideal:"70-90"})
-            } else if(weight>90 && weight<=95){
-                setData({...data,status:"Slightly over weight",color:"orange", ideal:"70-90"})
-            } else if(weight>95){
-                setData({...data,status:"Over weight",color:"red", ideal:"70-90"})
-            }
-        } else if(finalAge > 59){ // 75-85
-            if(weight >= 70 && weight <= 85){
-                setData({...data,status:"Ideal weight",color:"green", ideal:"75-85"})
-            } else if(weight<70 && weight>=60){
-                setData({...data,status:"Slightly Under weight",color:"orange", ideal:"75-85"})
-            } else if(weight<60){
-                setData({...data,status:"Under weight",color:"red", ideal:"75-85"})
-            } else if(weight>85 && weight<=90){
-                setData({...data,status:"Slightly over weight",color:"orange", ideal:"75-85"})
-            } else if(weight>90){
-                setData({...data,status:"Over weight",color:"red", ideal:"75-85"})
-            }
+
+        const bmi = (weight / ((height / 100) * (height / 100))).toFixed(2);
+        let bmiClass = '';
+    
+        if (bmi < 18.5) {
+          bmiClass = 'Underweight';
+        } else if (bmi >= 18.5 && bmi <= 24.9) {
+          bmiClass = 'Normal weight';
+        } else if (bmi >= 25 && bmi <= 29.9) {
+          bmiClass = 'Overweight';
+        } else if (bmi >= 30) {
+          bmiClass = 'Obese';
         }
+        
+        if(bmiClass === 'Underweight'){
+            setData({...data,status:bmiClass,color:"orange",ideal:"18.5-24.9",client:bmi})
+        } else if(bmiClass === 'Overweight'){
+            setData({...data,status:bmiClass,color:"orange",ideal:"18.5-24.9",client:bmi})
+        } else if(bmiClass === 'Normal weight'){
+            setData({...data,status:bmiClass,color:"green",ideal:"18.5-24.9",client:bmi})
+        } else if(bmiClass === "Obese"){
+            setData({...data,status:bmiClass,color:"red",ideal:"18.5-24.9",client:bmi})
+        }
+        console.log(data);
+        // if(finalAge <= 19){
+        //     if(weight >= 35 && weight <= 45){
+        //         setData({...data,status:"Ideal weight",color:"green", ideal:"35-45"})
+        //     } else if(weight<35 && weight>=20){
+        //         setData({...data,status:"Slightly Under weight",color:"orange", ideal:"35-45"})
+        //     } else if(weight<20){
+        //         setData({...data,status:"Under weight",color:"red", ideal:"35-45"})
+        //     } else if(weight>45 && weight<=55){
+        //         setData({...data,status:"Slightly over weight",color:"orange", ideal:"35-45"})
+        //     } else if(weight>55){
+        //         setData({...data,status:"Over weight",color:"red", ideal:"35-45"})
+        //     }
+        // } else if(finalAge > 19 && finalAge<=29){  // 70-80
+        //     if(weight >= 70 && weight <= 80){
+        //         setData({...data,status:"Ideal weight",color:"green", ideal:"70-80"})
+        //     } else if(weight<70 && weight>=50){
+        //         setData({...data,status:"Slightly Under weight",color:"orange", ideal:"70-80"})
+        //     } else if(weight<50){
+        //         setData({...data,status:"Under weight",color:"red", ideal:"70-80"})
+        //     } else if(weight>80 && weight<=90){
+        //         setData({...data,status:"Slightly over weight",color:"orange", ideal:"70-80"})
+        //     } else if(weight>90){
+        //         setData({...data,status:"Over weight",color:"red", ideal:"70-80"})
+        //     }
+        // } else if(finalAge >29 && finalAge<=39){ //75-90
+        //     if(weight >= 75 && weight <= 90){
+        //         setData({...data,status:"Ideal weight",color:"green", ideal:"75-90"})
+        //     } else if(weight<75 && weight>=65){
+        //         setData({...data,status:"Slightly Under weight",color:"orange", ideal:"75-90"})
+        //     } else if(weight<65){
+        //         setData({...data,status:"Under weight",color:"red", ideal:"75-90"})
+        //     } else if(weight>90 && weight<=95){
+        //         setData({...data,status:"Slightly over weight",color:"orange", ideal:"75-90"})
+        //     } else if(weight>95){
+        //         setData({...data,status:"Over weight",color:"red", ideal:"75-90"})
+        //     }
+        // } else if(finalAge >39 && finalAge <= 59){ //70-90
+        //     if(weight >= 70 && weight <= 90){
+        //         setData({...data,status:"Ideal weight",color:"green", ideal:"70-90"})
+        //     } else if(weight<70 && weight>=60){
+        //         setData({...data,status:"Slightly Under weight",color:"orange", ideal:"70-90"})
+        //     } else if(weight<60){
+        //         setData({...data,status:"Under weight",color:"red", ideal:"70-90"})
+        //     } else if(weight>90 && weight<=95){
+        //         setData({...data,status:"Slightly over weight",color:"orange", ideal:"70-90"})
+        //     } else if(weight>95){
+        //         setData({...data,status:"Over weight",color:"red", ideal:"70-90"})
+        //     }
+        // } else if(finalAge > 59){ // 75-85
+        //     if(weight >= 70 && weight <= 85){
+        //         setData({...data,status:"Ideal weight",color:"green", ideal:"75-85"})
+        //     } else if(weight<70 && weight>=60){
+        //         setData({...data,status:"Slightly Under weight",color:"orange", ideal:"75-85"})
+        //     } else if(weight<60){
+        //         setData({...data,status:"Under weight",color:"red", ideal:"75-85"})
+        //     } else if(weight>85 && weight<=90){
+        //         setData({...data,status:"Slightly over weight",color:"orange", ideal:"75-85"})
+        //     } else if(weight>90){
+        //         setData({...data,status:"Over weight",color:"red", ideal:"75-85"})
+        //     }
+        // }
     }
     
     const fetchData = async()=>{
@@ -164,7 +190,8 @@ function Custlanding() {
                 date:date,
                 reading:weight,
                 color:data.color,
-                ideal:data.ideal
+                ideal:data.ideal,
+                client:data.client
             })
         })
         .then((res)=>res.json())
@@ -185,31 +212,58 @@ function Custlanding() {
   return (
     <div className='customer_box'>
         <div className='custH1'><h1>Welcome {valid.name}</h1></div>
+        <div className='maincontent'>
         <div className='custInput_box'>
             <div className='custSelect'>
                 <div>
-                <label>Select Unit:</label>
+                <label>Select Unit:</label><br/>
                 <select className='selectbox' onChange={(e)=>setUnit(e.target.value)}>
                     <option>Kilograms</option>
                     <option>Pounds</option>
                 </select>
                 </div>
                 <div>
-                <label>Select Your Age:</label>
+                    <label>Enter your Height(in cm):</label>
+                    <input className='selectbox' type={"number"} onChange={(e)=>setHeight(e.target.value)}/>
+                </div>
+                <div>
+                <label>Select Your Age:</label><br/>
                 <input className='selectbox' type={"date"} onChange={(e)=>setAge(e.target.value)}/>
                 </div>
             </div>
             {unit === "Kilograms"?
             <div>
                 <label>Enter your weight (Kilograms)</label><br/>
-                <input ref={inputelem} className='custtext_box' type={"number"} min="0" onChange={(e)=>setWeight(e.target.value)}/>
+                <input ref={inputelem} className='custtext_box' type={"number"} min="0" onChange={(e)=>setWeight(e.target.value)}/><br/>
                 <button className='custSelectBtn' onClick={handleinput}>Enter</button>
             </div>:
             <div>
                 <label>Enter your weight (Pounds)</label><br/>
-                <input ref={inputelem} className='custtext_box' type={"number"} min="0" onChange={(e)=>setWeight(e.target.value)}/>
+                <input ref={inputelem} className='custtext_box' type={"number"} min="0" onChange={(e)=>setWeight(e.target.value)}/><br/>
                 <button className='custSelectBtn' onClick={handleinput}>Enter</button>
             </div>}
+        </div>
+        <div className='custTable'>
+            <table>
+                <thead className='tablehead'>
+                    <tr>
+                        <th>Date</th>
+                        <th>Current weight(kg)</th>
+                        <th>Your BMI/Ideal BMI</th>
+                    </tr>
+                </thead>
+                <tbody className='tableoverflow'>
+                {result && result.result.map((items,index)=>{
+                    return(
+                        <tr key={index}>
+                            <td>{items.date}</td>
+                            <td style={{"color":`${items.color}`}}>{items.reading}</td>
+                            <td>{items.client}/{items.ideal}</td>
+                        </tr>
+                    )
+                })}
+                </tbody>
+            </table>
         </div>
         <div className='custGraph'>
             {result &&
@@ -228,34 +282,16 @@ function Custlanding() {
                   <XAxis dataKey="date" />
                   <YAxis />
                   <Tooltip />
-                  <Area type="monotone" dataKey="reading" stroke="#8884d8" fill="#8884d8" />
+                  <Area type="monotone" dataKey="reading" stroke="white" fill="blue" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>}
         </div>
-        <div className='custTable'>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Current weight(kg)</th>
-                        <th>Ideal weight(kg)</th>
-                    </tr>
-                </thead>
-                <tbody className='tableoverflow'>
-                {result && result.result.map((items,index)=>{
-                    return(
-                        <tr key={index}>
-                            <td>{items.date}</td>
-                            <td style={{"color":`${items.color}`}}>{items.reading}</td>
-                            <td>{items.ideal}</td>
-                        </tr>
-                    )
-                })}
-                </tbody>
-            </table>
+        <div className='advise'>
+            <h1>Expert Advise</h1>
+            {valid.advise != "undefined"? <p className='h3'>{valid.advise}</p>:""}
         </div>
-        {valid.advise != "undefined"? <h3 className='h3'>Expert Advise: {valid.advise}</h3>:""}
+        </div>
     </div>
   )
 }
